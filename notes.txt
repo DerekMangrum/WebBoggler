@@ -1,18 +1,12 @@
-roll dice
-timer
-
-buttons:
-- start timer (rolls and shows dice first)
-- pause timer ***(hides dice)***
-- resume timer (shows dice)
-
-When timer goes to zero, blink screen or something
+- word lookup feature
 
 
 
 
-FUTURE
---------
+
+
+
+
 - multiple people
   - enter name
   - button to indicate read/not-ready
@@ -21,13 +15,5 @@ FUTURE
 - scoring
   - auto scoring
 
-- ability to rotate the board 90-degrees left or right
 
-- word lookup feature
 
-- add scoring rules to page
-  - 3-4 = 1
-  -   5 = 2
-  -   6 = 3
-  -   7 = 5
-  - >=8 - 11

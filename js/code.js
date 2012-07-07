@@ -8,6 +8,7 @@ var BASE_SECONDS_IN_ROUND = 180;
 var NUMBER_OF_ROLLS = 15;
 var DELAY_BETWEEN_ROLLS = 150;
 
+var diceHidden = false;
 var newRound;
 var secondsRemainingInRound;
 
@@ -26,6 +27,11 @@ function StartRound(isNewRound) {
 
 	$(document.getElementById('btnPause')).removeAttr('disabled');
 	$(document.getElementById('btnStop')).removeAttr('disabled');
+
+	if (diceHidden) {
+		ToggleDiceVisible();
+		diceHidden = false;
+	}
 }
 
 
@@ -33,6 +39,11 @@ function PauseRound() {
 	clearTimeout(CountdownTimer);
 	$(document.getElementById('btnStart')).removeAttr('disabled');
 	$(document.getElementById('btnPause')).attr('disabled', 'true');
+
+	if (!diceHidden) {
+		ToggleDiceVisible();
+		diceHidden = true;
+	}
 }
 
 
@@ -43,6 +54,12 @@ function ResetRound() {
 	$(document.getElementById('btnStop')).attr('disabled', 'true');
 	RoundTimerControl.innerHTML = '3:00';
 	newRound = true;
+
+	if (diceHidden) {
+		ToggleDiceVisible();
+		diceHidden = false;
+	}
+
 }
 
 
@@ -104,10 +121,10 @@ function RollDiceMultipleTimes(numberOfRolls) {
 	if (numberOfRolls > 0) {
 		//get rolled dice
 		var dice = RollDice();
-		
+
 		//counter
 		var x = 0;
-		
+
 		//foreach through the dice and update the Dice Controls
 		$.each(dice, function () {
 			document.getElementById('die' + x).value = this;
@@ -115,7 +132,7 @@ function RollDiceMultipleTimes(numberOfRolls) {
 		});
 
 		numberOfRolls--;
-		
+
 		if (numberOfRolls > 0) {
 			setTimeout('RollDiceMultipleTimes(' + numberOfRolls + ')', DELAY_BETWEEN_ROLLS);
 		};
@@ -162,9 +179,64 @@ function UpdateTimer() {
 	RoundTimerControl.innerHTML = TimeStr;
 }
 
+//***************************************
+//Rotate Board Functions
+//***************************************
+var curValues = new Array(16);
+
+function GetCurrentValues() {
+	x = 0;
+	$('#divDice').children('input').each(function () {
+		//alert(this.id); // "this" is the current element in the loop
+		curValues[x] = this.value;
+		x++
+	});
+}
+
+function RotateCW() {
+	GetCurrentValues();
+
+	$('#die0').val(curValues[12]);
+	$('#die1').val(curValues[8]);
+	$('#die2').val(curValues[4]);
+	$('#die3').val(curValues[0]);
+	$('#die4').val(curValues[13]);
+	$('#die5').val(curValues[9]);
+	$('#die6').val(curValues[5]);
+	$('#die7').val(curValues[1]);
+	$('#die8').val(curValues[14]);
+	$('#die9').val(curValues[10]);
+	$('#die10').val(curValues[6]);
+	$('#die11').val(curValues[2]);
+	$('#die12').val(curValues[15]);
+	$('#die13').val(curValues[11]);
+	$('#die14').val(curValues[7]);
+	$('#die15').val(curValues[3]);
+}
+
+function RotateCCW() {
+	GetCurrentValues();
+
+	$('#die0').val(curValues[3]);
+	$('#die1').val(curValues[7]);
+	$('#die2').val(curValues[11]);
+	$('#die3').val(curValues[15]);
+	$('#die4').val(curValues[2]);
+	$('#die5').val(curValues[6]);
+	$('#die6').val(curValues[10]);
+	$('#die7').val(curValues[14]);
+	$('#die8').val(curValues[1]);
+	$('#die9').val(curValues[5]);
+	$('#die10').val(curValues[9]);
+	$('#die11').val(curValues[13]);
+	$('#die12').val(curValues[0]);
+	$('#die13').val(curValues[4]);
+	$('#die14').val(curValues[8]);
+	$('#die15').val(curValues[12]);
+}
 
 //***************************************
-// Uitlity Functions
+// Utility Functions
 //***************************************
 
 //Used to get a random element from an Array
@@ -175,4 +247,8 @@ Array.prototype.GetRandomElement = function () {
 //Inserts leading zero on time value less than 10
 function LeadingZero(time) {
 	return (time < 10) ? "0" + time : +time;
+}
+
+function ToggleDiceVisible() {
+	$('[id*="die"]').toggleClass('dice-hidden');
 }

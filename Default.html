@@ -4,7 +4,7 @@
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="js/code.js" type="text/javascript"></script>
-	<title></title>
+	<title>WebBoggler Is FUN!</title>
 </head>
 <body>
 	<div id="controls" class="controlsContainer">
@@ -20,20 +20,35 @@
 	<div id="divDice" class="dieContainer">
 		<input type="text" id="die0" value="W" class="dice" />
 		<input type="text" id="die1" value="E" class="dice" />
-		<input type="text" id="die2" value="L" class="dice" />
-		<input type="text" id="die3" value="C" class="dice" />
+		<input type="text" id="die2" value="B" class="dice" />
+		<input type="text" id="die3" value="B" class="dice" />
 		<input type="text" id="die4" value="O" class="dice" />
-		<input type="text" id="die5" value="M" class="dice" />
-		<input type="text" id="die6" value="E" class="dice" />
-		<input type="text" id="die7" value="T" class="dice" />
-		<input type="text" id="die8" value="O" class="dice" />
-		<input type="text" id="die9" value="B" class="dice" />
-		<input type="text" id="die10" value="O" class="dice" />
-		<input type="text" id="die11" value="G" class="dice" />
-		<input type="text" id="die12" value="G" class="dice" />
-		<input type="text" id="die13" value="L" class="dice" />
-		<input type="text" id="die14" value="E" class="dice" />
+		<input type="text" id="die5" value="G" class="dice" />
+		<input type="text" id="die6" value="G" class="dice" />
+		<input type="text" id="die7" value="L" class="dice" />
+		<input type="text" id="die8" value="E" class="dice" />
+		<input type="text" id="die9" value="R" class="dice" />
+		<input type="text" id="die10" value="I" class="dice" />
+		<input type="text" id="die11" value="S" class="dice" />
+		<input type="text" id="die12" value="F" class="dice" />
+		<input type="text" id="die13" value="U" class="dice" />
+		<input type="text" id="die14" value="N" class="dice" />
 		<input type="text" id="die15" value="!" class="dice" />
+		<input id="btnCCW" type="button" value="Rotate CCW" onclick="RotateCCW()" class="rotateButtons" />
+		<input id="btnCW" type="button" value="Rotate CW" onclick="RotateCW()" class="rotateButtons" />
+	</div>
+	<div id="divScoringAndDictionary" class="scoringAndDictionaryContainer">
+		<div id="divScoring" class="scoringContainer">
+			<p>
+				SCORING:</p>
+			<ul>
+				<li>3-4 letters = 1 point</li>
+				<li>5 letters = 2 points</li>
+				<li>6 letters = 3 points</li>
+				<li>7 letters = 5 points</li>
+				<li>8 or more letters = 11 points</li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>
