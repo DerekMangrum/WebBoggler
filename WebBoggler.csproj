@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\styles.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="Default.html" />
     <Content Include="js\code.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
     <Content Include="Web.config" />
@@ -64,13 +64,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
