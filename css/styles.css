@@ -1,0 +1,53 @@
+﻿div:not(.aspNetHidden)
+{
+	margin: 10px;
+	float: left;
+}
+
+.dieContainer
+{
+	width: 350px;
+}
+
+.dice
+{
+	background-color: #D0D0D0;
+	height: 60px;
+	width: 60px;
+	font-size: 40px;
+	border: 2px solid black;
+	margin: 5px;
+	text-align: center;
+	float: left; /*evens up horizontal and vertical gridlines*/
+}
+
+.controlsContainer
+{
+	float: left;
+	width: 180px;
+}
+
+input
+{
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
+	margin: 10px;
+}
+
+.timerContainer
+{
+	text-align: center;
+	border: 1px solid black;
+	width: 150px;
+	font-family: Arial;
+	font-size: 18px;
+	margin: 10px;
+}
+
+.timer
+{
+	height: 40px;
+	display: inline-block;
+	font-size: 25px;
+}
