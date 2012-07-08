@@ -1,5 +1,0 @@
-C:\_WebDevProjects\WebBoggler\bin\WebBoggler.dll
-C:\_WebDevProjects\WebBoggler\bin\WebBoggler.pdb
-C:\_WebDevProjects\WebBoggler\obj\Debug\ResolveAssemblyReference.cache
-C:\_WebDevProjects\WebBoggler\obj\Debug\WebBoggler.dll
-C:\_WebDevProjects\WebBoggler\obj\Debug\WebBoggler.pdb
