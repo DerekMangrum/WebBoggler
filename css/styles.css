@@ -66,3 +66,19 @@ input
 	font-size: 12px;
 	width: auto;
 }
+
+.scoringAndDictionaryContainer
+{
+	width: 250px;
+}
+
+.wordLookupContainer
+{
+	border: 1px solid black;
+	text-align: center;
+}
+
+.wordLookupResults
+{
+	border: 0px;
+}
