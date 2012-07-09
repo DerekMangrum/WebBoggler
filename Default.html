@@ -50,7 +50,7 @@
 			</ul>
 		</div>
 		<div id="divWordLookup" class="wordLookupContainer">
-			<input id="txtWordToFind" type="text" />
+			<input id="txtWordToFind" type="text" onkeydown="ClearTextBox()" />
 			<input id="btnSearch" type="button" value="Lookup Word" onclick="LookupWord()" />
 			<input id="txtResults" type="text" readonly="readonly" value="" class="wordLookupResults" />
 		</div>

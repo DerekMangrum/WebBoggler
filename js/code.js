@@ -59,7 +59,6 @@ function ResetRound() {
 		ToggleDiceVisible();
 		diceHidden = false;
 	}
-
 }
 
 
@@ -116,7 +115,7 @@ function RollDice() {
 }
 
 
-// Timeout to roll dice and update display multiple times with small delat
+// Timeout to roll dice and update display multiple times with small delay
 function RollDiceMultipleTimes(numberOfRolls) {
 	if (numberOfRolls > 0) {
 		//get rolled dice
@@ -187,7 +186,6 @@ var curValues = new Array(16);
 function GetCurrentValues() {
 	x = 0;
 	$('#divDice').children('input').each(function () {
-		//alert(this.id); // "this" is the current element in the loop
 		curValues[x] = this.value;
 		x++
 	});
@@ -253,6 +251,10 @@ function ToggleDiceVisible() {
 	$('[id*="die"]').toggleClass('dice-hidden');
 }
 
+function ClearTextBox() {
+	document.getElementById('txtResults').value = "";
+}
+
 
 //**********************************************************************************
 //  Word Lookup Functions
@@ -261,7 +263,7 @@ function ToggleDiceVisible() {
 //   for workaround on how to use AJAX for off-domain queries
 //**********************************************************************************
 function LookupWord() {
-	var word = document.getElementById('txtWordToFind').value;
+	var word = document.getElementById('txtWordToFind').value.toLowerCase();
 	var url = './xmlparse.asp?word=' + word;
 	$.ajax({
 		type: "GET",
@@ -271,11 +273,12 @@ function LookupWord() {
 	});
 }
 
+
 function LookupWordResults(xml) {
 	if ($(xml).find("entry").length > 0) {
-		document.getElementById('txtResults').value = "Word.";
+		document.getElementById('txtResults').value = ":-)";
 	}
 	else {
-		document.getElementById('txtResults').value = "Not A Word.";
+		document.getElementById('txtResults').value = ":-(";
 	}
 }

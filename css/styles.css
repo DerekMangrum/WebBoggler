@@ -1,4 +1,4 @@
-﻿div:not(.aspNetHidden)
+﻿div
 {
 	margin: 10px;
 	float: left;
@@ -81,4 +81,5 @@ input
 .wordLookupResults
 {
 	border: 0px;
+	text-align: center;
 }
