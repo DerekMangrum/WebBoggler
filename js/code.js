@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-	$(document.getElementById('btnPause')).attr('disabled', 'true');
-	$(document.getElementById('btnStop')).attr('disabled', 'ture');
+	$('#btnPause').attr('disabled', 'true');
+	$('#btnStop').attr('disabled', 'ture');
 	newRound = true;
 });
 
@@ -16,7 +16,7 @@ var board = new Board();
 
 function StartRound(isNewRound) {
 	newRound = false;
-	$(document.getElementById('btnStart')).attr('disabled', 'true');
+	$('#btnStart').attr('disabled', 'true');
 
 	if (isNewRound) {
 		RollDiceMultipleTimes(NUMBER_OF_ROLLS);
@@ -26,8 +26,8 @@ function StartRound(isNewRound) {
 		CreateTimer('txtTimer', secondsRemainingInRound);
 	}
 
-	$(document.getElementById('btnPause')).removeAttr('disabled');
-	$(document.getElementById('btnStop')).removeAttr('disabled');
+	$('#btnPause').removeAttr('disabled');
+	$('#btnStop').removeAttr('disabled');
 
 	if (diceHidden) {
 		ToggleDiceVisible();
@@ -37,8 +37,8 @@ function StartRound(isNewRound) {
 
 function PauseRound() {
 	clearTimeout(CountdownTimer);
-	$(document.getElementById('btnStart')).removeAttr('disabled');
-	$(document.getElementById('btnPause')).attr('disabled', 'true');
+	$('#btnStart').removeAttr('disabled');
+	$('#btnPause').attr('disabled', 'true');
 
 	if (!diceHidden) {
 		ToggleDiceVisible();
@@ -48,9 +48,9 @@ function PauseRound() {
 
 function ResetRound() {
 	PauseRound();
-	$(document.getElementById('btnStart')).removeAttr('disabled');
-	$(document.getElementById('btnPause')).attr('disabled', 'true');
-	$(document.getElementById('btnStop')).attr('disabled', 'true');
+	$('#btnStart').removeAttr('disabled');
+	$('#btnPause').attr('disabled', 'true');
+	$('#btnStop').attr('disabled', 'true');
 	RoundTimerControl.innerHTML = '3:00';
 	newRound = true;
 
@@ -66,10 +66,8 @@ function ResetRound() {
 function RollDiceMultipleTimes(numberOfRolls) {
 	if (numberOfRolls > 0) {
 		board.RandomizeDice();
-		var x = 0;
-		$.each(board.Dice, function () {
-			document.getElementById('die' + x).value = this.faceUp;
-			x++;
+		$.each(board.Dice, function (idx, die) {
+			$('#die' + idx).val(die.faceUp);
 		});
 		numberOfRolls--;
 		if (numberOfRolls > 0) {
@@ -96,7 +94,7 @@ function CreateTimer(TimerDisplayControlID, NumberOfSecondsToRunTimer) {
 function Tick() {
 	if (secondsRemainingInRound <= 0) {
 		alert("Time's up!");
-		$(document.getElementById('btnPause')).attr('disabled', 'true');
+		$('#btnPause').attr('disabled', 'true');
 		return;
 	}
 
@@ -121,19 +119,15 @@ function UpdateTimer() {
 //***************************************
 function RotateCW() {
 	board.RotateCW();
-	var x = 0;
-	$.each(board.Dice, function () {
-		$('#die' + x).val(this.faceUp);
-		x++
+	$.each(board.Dice, function (idx, die) {
+		$('#die' + idx).val(die.faceUp);
 	});
 }
 
 function RotateCCW() {
 	board.RotateCCW();
-	var x = 0;
-	$.each(board.Dice, function () {
-		$('#die' + x).val(this.faceUp);
-		x++
+	$.each(board.Dice, function (idx, die) {
+		$('#die' + idx).val(die.faceUp);
 	});
 }
 
@@ -146,11 +140,12 @@ function LeadingZero(time) {
 }
 
 function ToggleDiceVisible() {
-	$('[id*="die"]').toggleClass('dice-hidden');
+	$('[id^="die"]').toggleClass('dice-hidden');
 }
 
 function ClearTextBox() {
-	document.getElementById('txtResults').value = "";
+	//document.getElementById('txtResults').value = "";
+	$('#txtResults').val('');
 }
 
 
