@@ -16,7 +16,7 @@ function Die(sides) {
 	this.faceUp = sides[0];
 	this.roll = function () {
 		var x = Math.floor(Math.random() * this.sides.length);
-		return this.sides[x];
+		this.faceUp = this.sides[x];
 	};
 };
 
@@ -58,7 +58,7 @@ function Board() {
 
 		// Roll each die
 		$.each(this.Dice, function () {
-			this.faceUp = this.roll();
+			this.roll();
 		});
 
 		// Mix the dice up
