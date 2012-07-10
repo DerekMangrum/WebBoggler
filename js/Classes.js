@@ -22,20 +22,6 @@ function Die(sides) {
 
 
 function Board() {
-	// Randomize an array order
-	// Used to shuffle the dice before displaying them
-	//Thank you: http://firelitdesign.blogspot.com/2011/08/javascript-array-scrambling.html
-	function mixArray(arrayIn) {
-		var arrayOut = [];
-		var origLength = arrayIn.length;
-		for (var x = 0; x < origLength; x++) {
-			var randIndex = Math.floor(Math.random() * arrayIn.length);
-			if (randIndex == arrayIn.length) randIndex--;
-			arrayOut.push(arrayIn.splice(randIndex, 1)[0]);
-		}
-		return arrayOut;
-	};
-
 	this.Dice = new Array(
 		new Die(['H', 'W', 'E', 'G', 'E', 'N']),
 		new Die(['P', 'O', 'H', 'C', 'S', 'A']),
@@ -56,10 +42,26 @@ function Board() {
 	);
 
 	this.RandomizeDice = function () {
+		// Randomize an array order
+		// Used to shuffle the dice before displaying them
+		//Thank you: http://firelitdesign.blogspot.com/2011/08/javascript-array-scrambling.html
+		function mixArray(arrayIn) {
+			var arrayOut = [];
+			var origLength = arrayIn.length;
+			for (var x = 0; x < origLength; x++) {
+				var randIndex = Math.floor(Math.random() * arrayIn.length);
+				if (randIndex == arrayIn.length) randIndex--;
+				arrayOut.push(arrayIn.splice(randIndex, 1)[0]);
+			}
+			return arrayOut;
+		};
+
+		// Roll each die
 		$.each(this.Dice, function () {
 			this.faceUp = this.roll();
 		});
-		
+
+		// Mix the dice up
 		this.Dice = mixArray(this.Dice);
 	};
 
