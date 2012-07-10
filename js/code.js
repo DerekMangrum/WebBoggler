@@ -2,6 +2,12 @@
 	$(document.getElementById('btnPause')).attr('disabled', 'true');
 	$(document.getElementById('btnStop')).attr('disabled', 'ture');
 	newRound = true;
+
+	var testDie = new Die([1, 2, 3, 4, 5, 6]);
+	var board = new Board();
+	//board.RandomizeDice();
+	board.RotateCW();
+	//alert(testDie.roll());
 });
 
 var BASE_SECONDS_IN_ROUND = 180;

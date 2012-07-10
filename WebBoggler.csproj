@@ -53,6 +53,7 @@
   <ItemGroup>
     <Content Include="css\styles.css" />
     <Content Include="Default.html" />
+    <Content Include="js\Classes.js" />
     <Content Include="js\code.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
     <Content Include="Web.config" />
