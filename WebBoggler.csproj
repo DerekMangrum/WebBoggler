@@ -51,11 +51,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\jquery.countdown.css" />
     <Content Include="css\styles.css" />
     <Content Include="Default.html" />
     <Content Include="js\Classes.js" />
     <Content Include="js\code.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
+    <Content Include="js\jquery.countdown.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

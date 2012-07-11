@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
-	$('#btnPause').attr('disabled', 'true');
-	$('#btnStop').attr('disabled', 'ture');
-	newRound = true;
+	startEverything();
 });
 
 var BASE_SECONDS_IN_ROUND = 180;
@@ -13,6 +11,28 @@ var newRound;
 var secondsRemainingInRound;
 
 var board = new Board();
+
+function startEverything() {
+	$('#btnStart').removeAttr('disabled');
+	$('#btnPause').attr('disabled', 'true');
+	$('#btnStop').attr('disabled', 'ture');
+	newRound = true;
+
+	if (diceHidden) {
+		ToggleDiceVisible();
+		diceHidden = false;
+	}
+
+	$('#divNewTimer').countdown('destroy');
+
+	$('#divNewTimer').countdown({
+		until: +180,
+		format: 'MS',
+		layout: '{mn}:{snn}',
+		expiryText: 'Round is over'
+	}).countdown('pause');
+}
+
 
 function StartRound(isNewRound) {
 	newRound = false;
@@ -33,6 +53,8 @@ function StartRound(isNewRound) {
 		ToggleDiceVisible();
 		diceHidden = false;
 	}
+
+	$('#divNewTimer').countdown('resume');
 }
 
 function PauseRound() {
@@ -44,6 +66,8 @@ function PauseRound() {
 		ToggleDiceVisible();
 		diceHidden = true;
 	}
+
+	$('#divNewTimer').countdown('pause');
 }
 
 function ResetRound() {
@@ -58,6 +82,8 @@ function ResetRound() {
 		ToggleDiceVisible();
 		diceHidden = false;
 	}
+
+	startEverything();
 }
 
 //***********************************************
@@ -71,7 +97,7 @@ function RollDiceMultipleTimes(numberOfRolls) {
 		if (numberOfRolls > 0) {
 			setTimeout('RollDiceMultipleTimes(' + numberOfRolls + ')', DELAY_BETWEEN_ROLLS);
 		};
-	};
+	}
 }
 
 //*********************************
