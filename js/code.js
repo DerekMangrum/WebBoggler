@@ -20,7 +20,7 @@ function StartRound(isNewRound) {
 
 	if (isNewRound) {
 		RollDiceMultipleTimes(NUMBER_OF_ROLLS);
-		setTimeout("CreateTimer('txtTimer', BASE_SECONDS_IN_ROUND)", NUMBER_OF_ROLLS * DELAY_BETWEEN_ROLLS + 1000);
+		setTimeout("CreateTimer('txtTimer', BASE_SECONDS_IN_ROUND)", NUMBER_OF_ROLLS * DELAY_BETWEEN_ROLLS);
 	}
 	else {
 		CreateTimer('txtTimer', secondsRemainingInRound);
@@ -51,7 +51,7 @@ function ResetRound() {
 	$('#btnStart').removeAttr('disabled');
 	$('#btnPause').attr('disabled', 'true');
 	$('#btnStop').attr('disabled', 'true');
-	RoundTimerControl.innerHTML = '3:00';
+	RoundTimerControl.text('3:00');
 	newRound = true;
 
 	if (diceHidden) {
@@ -81,8 +81,7 @@ var RoundTimerControl;
 var CountdownTimer;
 
 function CreateTimer(TimerDisplayControlID, NumberOfSecondsToRunTimer) {
-
-	RoundTimerControl = document.getElementById(TimerDisplayControlID);
+	RoundTimerControl = $("#" + TimerDisplayControlID);
 	secondsRemainingInRound = NumberOfSecondsToRunTimer;
 
 	UpdateTimer();
@@ -109,7 +108,7 @@ function UpdateTimer() {
 
 	var TimeStr = Minutes + ":" + LeadingZero(Seconds);
 
-	RoundTimerControl.innerHTML = TimeStr;
+	RoundTimerControl.text(TimeStr);
 }
 
 //***************************************
@@ -138,7 +137,6 @@ function ToggleDiceVisible() {
 }
 
 function ClearTextBox() {
-	//document.getElementById('txtResults').value = "";
 	$('#txtResults').val('');
 }
 
@@ -156,7 +154,7 @@ function DisplayDiceOnForm() {
 //   for workaround on how to use AJAX for off-domain queries
 //**********************************************************************************
 function LookupWord() {
-	var word = document.getElementById('txtWordToFind').value.toLowerCase();
+	var word = $('#txtWordToFind').val().toLowerCase();
 	var url = './xmlparse.asp?word=' + word;
 	$.ajax({
 		type: "GET",
@@ -168,9 +166,9 @@ function LookupWord() {
 
 function LookupWordResults(xml) {
 	if ($(xml).find("entry").length > 0) {
-		document.getElementById('txtResults').value = ":-)";
+		$('#txtResults').val(':-)');
 	}
 	else {
-		document.getElementById('txtResults').value = ":-(";
+		$('#txtResults').val(':-(');
 	}
 }
