@@ -66,9 +66,7 @@ function ResetRound() {
 function RollDiceMultipleTimes(numberOfRolls) {
 	if (numberOfRolls > 0) {
 		board.RandomizeDice();
-		$.each(board.Dice, function (idx, die) {
-			$('#die' + idx).val(die.faceUp);
-		});
+		DisplayDiceOnForm();
 		numberOfRolls--;
 		if (numberOfRolls > 0) {
 			setTimeout('RollDiceMultipleTimes(' + numberOfRolls + ')', DELAY_BETWEEN_ROLLS);
@@ -119,16 +117,12 @@ function UpdateTimer() {
 //***************************************
 function RotateCW() {
 	board.RotateCW();
-	$.each(board.Dice, function (idx, die) {
-		$('#die' + idx).val(die.faceUp);
-	});
+	DisplayDiceOnForm();
 }
 
 function RotateCCW() {
 	board.RotateCCW();
-	$.each(board.Dice, function (idx, die) {
-		$('#die' + idx).val(die.faceUp);
-	});
+	DisplayDiceOnForm();
 }
 
 //***************************************
@@ -146,6 +140,12 @@ function ToggleDiceVisible() {
 function ClearTextBox() {
 	//document.getElementById('txtResults').value = "";
 	$('#txtResults').val('');
+}
+
+function DisplayDiceOnForm() {
+	$.each(board.Dice, function (idx, die) {
+		$('#die' + idx).val(die.faceUp);
+	});
 }
 
 
