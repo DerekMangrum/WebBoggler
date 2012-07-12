@@ -213,7 +213,8 @@ function Game() {
 	var round = new Round();
 
 	function initNewRound() {
-		this.round.pauseRound();
+		$('#btnStart').removeAttr('disabled');
+		$('#btnPause').attr('disabled', 'true');
 		$('#btnStop').attr('disabled', 'true');
 		this.round.newRound = true;
 
@@ -225,10 +226,10 @@ function Game() {
 		$('#divNewTimer').countdown('destroy');
 
 		$('#divNewTimer').countdown({
-			until: +180,
+			until: BASE_SECONDS_IN_ROUND,
 			format: 'MS',
 			layout: '{mn}:{snn}',
-			expiryText: 'Round is over'
+			onExpiry: function () { alert('Round is over.'); $('#btnPause').attr('disabled', 'true'); }
 		}).countdown('pause');
 	}
 
