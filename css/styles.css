@@ -56,6 +56,13 @@ input
 	height: 40px;
 	display: inline-block;
 	font-size: 25px;
+	float: none;
+	margin: 0px;
+}
+
+.timerp
+{
+	margin: 5px;
 }
 
 .rotateButtons
