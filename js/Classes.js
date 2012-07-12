@@ -250,7 +250,32 @@ function Utility() {
 		$('#txtResults').val('');
 	}
 
+	////**********************************************************************************
+	// SEE: http://forum.jquery.com/topic/jquery-ajax-and-xml-issues-no-element-found
+	//   for workaround on how to use AJAX for off-domain queries
+	//**********************************************************************************
+	function lookupWord() {
+		var word = $('#txtWordToFind').val().toLowerCase();
+		var url = './xmlparse.asp?word=' + word;
+		$.ajax({
+			type: "GET",
+			url: url,
+			dataType: "xml",
+			success: LookupWordResults
+		});
+
+		function LookupWordResults(xml) {
+			if ($(xml).find("entry").length > 0) {
+				$('#txtResults').val(':-)');
+			}
+			else {
+				$('#txtResults').val(':-(');
+			}
+		}
+	}
+
 	return {
-		clearTextBox: clearTextBox
+		clearTextBox: clearTextBox,
+		lookupWord: lookupWord
 	};
 };
