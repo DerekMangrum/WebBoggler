@@ -1,45 +1,52 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<script src="js/Classes.js" type="text/javascript"></script>
-	<script src="js/jquery.countdown.min.js" type="text/javascript"></script>
-	<script src="js/code.js" type="text/javascript"></script>
+	<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="Scripts/Classes.js" type="text/javascript"></script>
+	<script src="Scripts/jquery.countdown.min.js" type="text/javascript"></script>
+	<script src="Scripts/jquery.signalR-0.5.2.min.js" type="text/javascript"></script>
+	<script src="signalr/hubs" type="text/javascript"></script>
+	<script src="Scripts/code.js" type="text/javascript"></script>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/jquery.countdown.css" rel="stylesheet" type="text/css" />
 	<title>WebBoggler Is FUN!</title>
 </head>
 <body>
-	<div id="controls" class="controlsContainer">
-		<input type="button" id="btnStart" value="Start Round" class="inputControl" onclick="game.round.startRound(game.round.newRound)" />
-		<input type="button" id="btnPause" value="Pause Round" class="inputControl" onclick="game.round.pauseRound()" />
-		<input type="button" id="btnStop" value="New Round" class="inputControl" onclick="game.initNewRound()" />
-		<div id="timerContainer" class="timerContainer">
-			<p class="timerp">
-				TIMER</p>
-			<div id="divNewTimer" class="timer">
+	<div id="divMainBoard" class="mainBoard">
+		<div id="controls" class="controlsContainer">
+			<div id="timerContainer" class="timerContainer">
+				<label id="lblTimer" class="timer">
+					Timer:
+				</label>
+				<div id="divNewTimer" class="timer">
+				</div>
 			</div>
+			<input type="button" id="btnStart" value="Start" class="inputControl" onclick="game.round.startRound(game.round.newRound)" />
+			<input type="button" id="btnPause" value="Pause" class="inputControl" onclick="game.round.pauseRound()" />
+			<input type="button" id="btnStop" value="New" class="inputControl" onclick="game.initNewRound()" />
 		</div>
-	</div>
-	<div id="divDice" class="dieContainer">
-		<input type="text" id="die0" value="W" class="dice" readonly="readonly" />
-		<input type="text" id="die1" value="E" class="dice" readonly="readonly" />
-		<input type="text" id="die2" value="B" class="dice" readonly="readonly" />
-		<input type="text" id="die3" value="B" class="dice" readonly="readonly" />
-		<input type="text" id="die4" value="O" class="dice" readonly="readonly" />
-		<input type="text" id="die5" value="G" class="dice" readonly="readonly" />
-		<input type="text" id="die6" value="G" class="dice" readonly="readonly" />
-		<input type="text" id="die7" value="L" class="dice" readonly="readonly" />
-		<input type="text" id="die8" value="E" class="dice" readonly="readonly" />
-		<input type="text" id="die9" value="R" class="dice" readonly="readonly" />
-		<input type="text" id="die10" value="I" class="dice" readonly="readonly" />
-		<input type="text" id="die11" value="S" class="dice" readonly="readonly" />
-		<input type="text" id="die12" value="F" class="dice" readonly="readonly" />
-		<input type="text" id="die13" value="U" class="dice" readonly="readonly" />
-		<input type="text" id="die14" value="N" class="dice" readonly="readonly" />
-		<input type="text" id="die15" value="!" class="dice" readonly="readonly" />
-		<input id="btnCCW" type="button" value="Rotate CCW" onclick="game.round.board.rotateCCW()" class="rotateButtons" />
-		<input id="btnCW" type="button" value="Rotate CW" onclick="game.round.board.rotateCW()" class="rotateButtons" />
+		<div id="divDice" class="dieContainer">
+			<input type="text" id="die0" value="W" class="dice" readonly="readonly" />
+			<input type="text" id="die1" value="E" class="dice" readonly="readonly" />
+			<input type="text" id="die2" value="B" class="dice" readonly="readonly" />
+			<input type="text" id="die3" value="B" class="dice" readonly="readonly" />
+			<input type="text" id="die4" value="O" class="dice" readonly="readonly" />
+			<input type="text" id="die5" value="G" class="dice" readonly="readonly" />
+			<input type="text" id="die6" value="G" class="dice" readonly="readonly" />
+			<input type="text" id="die7" value="L" class="dice" readonly="readonly" />
+			<input type="text" id="die8" value="E" class="dice" readonly="readonly" />
+			<input type="text" id="die9" value="R" class="dice" readonly="readonly" />
+			<input type="text" id="die10" value="I" class="dice" readonly="readonly" />
+			<input type="text" id="die11" value="S" class="dice" readonly="readonly" />
+			<input type="text" id="die12" value="F" class="dice" readonly="readonly" />
+			<input type="text" id="die13" value="U" class="dice" readonly="readonly" />
+			<input type="text" id="die14" value="N" class="dice" readonly="readonly" />
+			<input type="text" id="die15" value="!" class="dice" readonly="readonly" />
+			<input id="btnCCW" type="button" value="Rotate CCW" onclick="game.round.board.rotateCCW()"
+				class="rotateButtons" />
+			<input id="btnCW" type="button" value="Rotate CW" onclick="game.round.board.rotateCW()"
+				class="rotateButtons" />
+		</div>
 	</div>
 	<div id="divScoringAndDictionary" class="scoringAndDictionaryContainer">
 		<div id="divScoring" class="scoringContainer">
@@ -56,8 +63,15 @@
 		<div id="divWordLookup" class="wordLookupContainer">
 			<input id="txtWordToFind" type="text" onkeydown="util.clearTextBox()" />
 			<input id="btnSearch" type="button" value="Lookup Word" onclick="util.lookupWord()" />
+			<br />
 			<input id="txtResults" type="text" readonly="readonly" value="" class="wordLookupResults" />
 		</div>
+	</div>
+	<div id="divChat" class="chatDiv">
+		Enter your name:<input type="text" id="txtName" /><br />
+		<textarea id="messages" rows="10" cols="40" readonly="readonly"></textarea><br />
+		<input id="msg" type="text" />
+		<input type="button" id="btnSendMessage" value="Send Message" />
 	</div>
 </body>
 </html>

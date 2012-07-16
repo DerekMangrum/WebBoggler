@@ -1,9 +1,9 @@
-﻿div
+﻿.mainBoard
 {
-	margin: 10px;
+	text-align: center;
+	width: 310px;
 	float: left;
 }
-
 .dieContainer
 {
 	width: 305px;
@@ -29,40 +29,27 @@
 
 .controlsContainer
 {
-	float: left;
-	width: 180px;
-}
-
-input
-{
-	width: 150px;
-	height: 40px;
-	font-size: 18px;
-	margin: 10px;
+	/*	float: left;*/
+	width: 100%;
+	vertical-align: middle;
+	margin-bottom: 5px;
 }
 
 .timerContainer
 {
-	text-align: center;
 	border: 1px solid black;
-	width: 150px;
 	font-family: Arial;
-	font-size: 18px;
-	margin: 10px;
+	font-size: 12px;
+	float: left;
+	margin-right: 10px;
 }
 
 .timer
 {
-	height: 40px;
 	display: inline-block;
-	font-size: 25px;
+	font-size: 18px;
 	float: none;
 	margin: 0px;
-}
-
-.timerp
-{
-	margin: 5px;
 }
 
 .rotateButtons
@@ -74,19 +61,19 @@ input
 	width: auto;
 }
 
-.scoringAndDictionaryContainer
-{
-	width: 250px;
-}
-
-.wordLookupContainer
-{
-	border: 1px solid black;
-	text-align: center;
-}
-
 .wordLookupResults
 {
 	border: 0px;
 	text-align: center;
+}
+
+.chatDiv
+{
+	float: left;
+}
+
+.scoringAndDictionaryContainer
+{
+	float: left;
+	margin-right: 10px;
 }

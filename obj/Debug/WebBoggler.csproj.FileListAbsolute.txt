@@ -3,3 +3,12 @@ C:\_WebDevProjects\WebBoggler\bin\WebBoggler.pdb
 C:\_WebDevProjects\WebBoggler\obj\Debug\ResolveAssemblyReference.cache
 C:\_WebDevProjects\WebBoggler\obj\Debug\WebBoggler.dll
 C:\_WebDevProjects\WebBoggler\obj\Debug\WebBoggler.pdb
+C:\_WebDevProjects\WebBoggler\bin\Microsoft.Web.Infrastructure.dll
+C:\_WebDevProjects\WebBoggler\bin\Newtonsoft.Json.dll
+C:\_WebDevProjects\WebBoggler\bin\SignalR.dll
+C:\_WebDevProjects\WebBoggler\bin\SignalR.Hosting.AspNet.dll
+C:\_WebDevProjects\WebBoggler\bin\SignalR.Hosting.Common.dll
+C:\_WebDevProjects\WebBoggler\bin\Newtonsoft.Json.xml
+C:\_WebDevProjects\WebBoggler\bin\SignalR.xml
+C:\_WebDevProjects\WebBoggler\bin\SignalR.Hosting.AspNet.xml
+C:\_WebDevProjects\WebBoggler\bin\SignalR.Hosting.Common.xml
